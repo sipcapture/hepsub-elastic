@@ -6,7 +6,7 @@ services:
     image: sipcapture/hepsub-elastic
     restart: always
     environment:
-      - PUBLIC_IP=${PUBLIC_IP:-voipmonitor-hep}
+      - PUBLIC_IP=${PUBLIC_IP:-elastic-hep}
       - PUBLIC_PORT=${PUBLIC_PORT:-18088}
       - HOMER_IP=${HOMER_IP:-homer-webapp}
       - HOMER_PORT=${HOMER_PORT:-9080}
