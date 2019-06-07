@@ -25,16 +25,16 @@ app.all('*', function(req, res, next) {
 app.post('/get/:id', function (req, res) {
   if (config.debug) console.log('NEW API POST REQ', req.body);
   var data = req.body.data;
-  if (!data) { res.send(500); return }
+  if (!data|!config.elastic) { res.send(500); return }
   if (!data.constructor === Array) data = [data];
   var settings = {
     "query" : {
         "terms" : {
-            "user" : data,
             "boost" : 1.0
         }
     }
   };
+  settings.query.terms[config.elastic.field] = data;
   getElastic(settings, res);
 })
 
@@ -47,7 +47,7 @@ var getElastic = function(settings, res){
   try {
     const client = new Client({ node:  config.elastic.url || 'http://localhost:9200' })
     client.search({
-      index: config.elastic.index || 'my-index',
+      index: config.elastic.index,
       body: settings
     }, (err, result) => {
       if (err) {

@@ -14,7 +14,8 @@ var config = {
   debug: true,
   elastic: {
 	"url": "http://localhost:9200",
-	"index": "my-index"
+	"index": "my-index",
+	"field": "callid"
   }
 };
 
