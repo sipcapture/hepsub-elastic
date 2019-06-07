@@ -28,13 +28,12 @@ app.post('/get/:id', function (req, res) {
   if (!data) { res.send(500); return }
   if (!data.constructor === Array) data = [data];
   var settings = {
-      "params": [
-        {
-          "OriginIDs": data
+    "query" : {
+        "terms" : {
+            "user" : data,
+            "boost" : 1.0
         }
-      ],
-      "id": 0,
-      "method": "ApierV2.GetCDRs"
+    }
   };
   getElastic(settings, res);
 })

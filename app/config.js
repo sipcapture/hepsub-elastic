@@ -1,5 +1,5 @@
 var config = {
-  backend: 'http://localhost:9080/api/v3/agent/subscribe',
+  backend: 'http://localhost:9080/api/v3/agent/subscribe', // use v2 for HEPIC!
   service: {
 	"uuid": Math.random().toString(36).substring(7),
 	"host":"PUBLIC_IP_HERE",
