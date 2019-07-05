@@ -8,7 +8,7 @@ var config = {
 	"path": "/get",
 	"type": "cdr",
 	"ttl": 300,
-	"node": "cgrates",
+	"node": "elastic",
 	"gid": 10
   },
   debug: true,
