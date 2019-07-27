@@ -15,7 +15,8 @@ var config = {
   elastic: {
 	"url": "http://localhost:9200",
 	"index": "my-index",
-	"field": "callid"
+	"field": "callid",
+	"hep_field": "callid"
   }
 };
 
