@@ -27,15 +27,24 @@ app.post('/get/:id', function (req, res) {
   var data = req.body.data;
   if (!data|!config.elastic) { res.send(500); return }
   if (!data.constructor === Array) data = [data];
-  var settings = {
-    "query" : {
-        "terms" : {
-            "boost" : 1.0
-        }
-    }
-  };
-  settings.query.terms[config.elastic.field] = data;
-  getElastic(settings, res);
+  // Reduce to an Array containing the selected HEP Field
+  var filtered_data = data.map(function (entry) {
+    return entry[config.elastic.hep_field];
+  });
+  if (filtered_data === undefined || filtered_data.length == 0) {
+	res.status(500).end();
+  } else {
+	// Form ES Query
+  	var settings = {
+  	  "query" : {
+  	      "terms" : {
+  	          "boost" : 1.0
+  	      }
+  	  }
+  	};
+  	settings.query.terms[config.elastic.field] = filtered_data;
+  	getElastic(settings, res);
+  }
 })
 
 app.listen(port, () => console.log('API Server started',port))
