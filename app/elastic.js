@@ -65,7 +65,9 @@ var getElastic = function(settings, res){
           res.status(500).end();
       } else {
          if (config.debug) console.log('ELASTIC API RESPONSE',result)
-         res.send(result).end();
+	 if (result.body && result.body.hits) { res.send(result.body.hits.hits).end(); }
+         else if (result.body) { res.send(result.body).end(); }
+	 else { res.send(result).end(); }
       }
     })
 
