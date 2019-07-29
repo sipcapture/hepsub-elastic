@@ -24,8 +24,8 @@ app.all('*', function(req, res, next) {
 /* HEP Post Paths */
 app.post('/get/:id', function (req, res) {
   if (config.debug) console.log('NEW API POST REQ', req.body);
-  var data = req.body.data;
-  if (!data|!config.elastic) { res.send(500); return }
+  var data = req.body;
+  if (!data|!config.elastic) { res.status(500).end(); return }
   if (!data.constructor === Array) data = [data];
   // Reduce to an Array containing the selected HEP Field
   var filtered_data = data.map(function (entry) {
