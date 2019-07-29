@@ -7,6 +7,7 @@ try {
   var config = require('./config.js');
 } catch(e) { console.log('Missing config!',e); process.exit(1); }
 
+const { Client } = require('@elastic/elasticsearch')
 var express = require('express');
 const app = express();
 var bodyParser = require("body-parser");
