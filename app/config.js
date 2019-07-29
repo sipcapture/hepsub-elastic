@@ -16,7 +16,8 @@ var config = {
 	"url": "http://localhost:9200",
 	"index": "my-index",
 	"field": "callid",
-	"hep_field": "callid"
+	"hep_field": "callid",
+	"size": 100
   }
 };
 
