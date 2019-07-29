@@ -37,7 +37,6 @@ app.post('/get/:id', function (req, res) {
   } else {
 	// Form ES Query
   	var settings = {
-	  "size" : 100,
   	  "query" : {
   	      "terms" : {
   	          "boost" : 1.0
@@ -45,7 +44,6 @@ app.post('/get/:id', function (req, res) {
   	  }
   	};
   	settings.query.terms[config.elastic.field] = filtered_data;
-	if (config.elastic.size) { settings.size = config.elastic.size; }
   	getElastic(settings, res);
   }
 })
