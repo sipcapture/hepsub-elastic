@@ -67,8 +67,19 @@ var getElastic = function(settings, res){
           res.status(500).end();
       } else {
          if (config.debug) console.log('ELASTIC API RESPONSE',result)
-	 if (result.body && result.body.hits) { res.send(result.body.hits).end(); }
-         else if (result.body) { res.send(result.body).end(); }
+	 if (result.body && result.body.hits) {
+		 if (config.reduce) {
+			 var lines = result.body.hits.hits.map(function(line) {
+			  return {
+			    ts: line._source.timestamp,
+			    message: line._source.message
+			  };
+			})
+			res.send(lines).end(); 
+		 } else {
+			 res.send(result.body.hits).end(); 
+		 }
+	 } else if (result.body) { res.send(result.body).end(); }
 	 else { res.send(result).end(); }
       }
     })
