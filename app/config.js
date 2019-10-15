@@ -17,7 +17,8 @@ var config = {
 	"index": "my-index",
 	"field": "callid",
 	"hep_field": "callid",
-	"size": 100
+	"size": 100,
+	"reduce": true
   }
 };
 
