@@ -68,7 +68,7 @@ var getElastic = function(settings, res){
       } else {
          if (config.debug) console.log('ELASTIC API RESPONSE',result)
 	 if (result.body && result.body.hits) {
-		 if (config.reduce) {
+		 if (config.elastic && config.elastic.reduce) {
 			 var lines = result.body.hits.hits.map(function(line) {
 			  return {
 			    ts: line._source.timestamp,
