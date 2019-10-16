@@ -75,7 +75,7 @@ var getElastic = function(settings, res){
 			    message: line._source.message
 			  };
 			})
-			res.send(lines).end(); 
+			res.send({hits: lines}).end(); 
 		 } else {
 			 res.send(result.body.hits).end(); 
 		 }
