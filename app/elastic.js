@@ -70,10 +70,15 @@ var getElastic = function(settings, res){
 	 if (result.body && result.body.hits) {
 		 if (config.elastic && config.elastic.reduce) {
 			 var lines = result.body.hits.hits.map(function(line) {
-			  return {
-			    ts: line._source.timestamp,
-			    message: line._source.message
-			  };
+			  if (config.elastic.stringify) {
+				  return "[" + line._source.timestamp + "] "+ (line._source.source||"unknown") + ": " + line._source.long_message;
+			  } else { 
+				  return {
+				    ts: line._source.timestamp,
+				    source: line._source.source,
+				    message: line._source.long_message
+				  };
+			  }
 			})
 			res.send({hits: lines}).end(); 
 		 } else {
