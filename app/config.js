@@ -19,7 +19,7 @@ var config = {
 	"hep_field": "callid",
 	"size": 100,
 	"reduce": true,
-	"template": [ "timestamp", "source", "long_message" ]
+	"stringify": false
   }
 };
 
