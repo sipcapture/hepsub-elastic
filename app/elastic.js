@@ -83,6 +83,7 @@ var api = config.backend;
 const uuidv1 = require('uuid/v1');
 var uuid = uuidv1();
 var ttl = config.service.ttl;
+var token = config.token;
 
 var publish = function(){
   try {
@@ -92,7 +93,10 @@ var publish = function(){
       method: 'POST',
       url: api,
       dataType: 'JSON',
-      data: settings
+      json: settings,
+      headers: {
+        'Auth-Token': token
+      }
     }, (err, res) => {
       if (err) {
         if (config.debug) console.log('REGISTER API ERROR', err.message);
