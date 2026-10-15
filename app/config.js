@@ -2,7 +2,7 @@ var config = {
   backend: "http://HOMER_IP_HERE:HOMER_PORT_HERE/api/v3/agent/subscribe",
   token: "HOMER_TOKEN_HERE",
   service: {
-	"uuid": Math.random().toString(36).substring(7),
+	"uuid": "SERVICE-UUID-HERE",
 	"host":"PUBLIC_IP_HERE",
 	"port": 18088,
 	"protocol": "http",
