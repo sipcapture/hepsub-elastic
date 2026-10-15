@@ -80,7 +80,7 @@ var getElastic = function(settings, res){
 /* HEP PUBSUB Hooks */
 var req = require('req-fast');
 var api = config.backend;
-const uuidv1 = require('uuid/v1');
+const { v1: uuidv1 } = require('uuid');
 var uuid = uuidv1();
 var ttl = config.service.ttl;
 var token = config.token;

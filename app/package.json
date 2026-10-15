@@ -13,6 +13,6 @@
     "@elastic/elasticsearch": "^7.1.0",
     "express": "^4.16.4",
     "req-fast": "^0.2.17",
-    "uuid": "^3.3.2"
+    "uuid": "^11.1.1"
   }
 }
